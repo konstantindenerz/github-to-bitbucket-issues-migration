@@ -13,7 +13,7 @@ module GTBI
           :kind => get_kind(@raw),
           :milestone => get_milestone(@raw),
           :priority => get_priority(@raw),
-          :reporter => UserMapping.get()[@raw.user.login] if @raw.user.login && UserMapping.get()[@raw.user.login],
+          :reporter => get_reporter(@raw),
           :status => get_status(@raw),
           :title => @raw.title,
           :updated_on => @raw.updated_at,
@@ -23,6 +23,10 @@ module GTBI
       end
 
       private
+
+      def get_reporter(issue)
+        UserMapping.get()[issue.user.login]  if issue.user && issue.user.login &&  UserMapping.get()[issue.user.login]
+      end
 
       def get_assignee(issue)
         UserMapping.get()[issue.assignee.login]  if issue.assignee && issue.assignee.login &&  UserMapping.get()[issue.assignee.login]

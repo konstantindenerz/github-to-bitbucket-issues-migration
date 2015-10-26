@@ -8,11 +8,15 @@ module GTBI
           :id => @raw.id,
           :issue => get_issue(@raw),
           :updated_on => @raw.updated_at,
-          :user => UserMapping.get()[@raw.user.login] if @raw.user.login && UserMapping.get()[@raw.user.login]
+          :user => get_user(@raw)
         }
       end
 
       private
+
+      def get_user(issue)
+        UserMapping.get()[issue.user.login] if issue.user && issue.user.login && UserMapping.get()[issue.user.login]
+      end
 
       def get_issue(comment)
         comment.issue_url.split('/').last
