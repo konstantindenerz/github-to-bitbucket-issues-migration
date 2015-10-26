@@ -8,7 +8,7 @@ module GTBI
           :id => @raw.id,
           :issue => get_issue(@raw),
           :updated_on => @raw.updated_at,
-          :user => @raw.user.login
+          :user => UserMapping.get()[@raw.user.login] if @raw.user.login && UserMapping.get()[@raw.user.login]
         }
       end
 
@@ -21,4 +21,3 @@ module GTBI
     end
   end
 end
-

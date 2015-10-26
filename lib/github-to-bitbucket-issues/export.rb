@@ -2,6 +2,7 @@ require 'octokit'
 require 'zip'
 require 'json'
 
+require_relative 'formatters/usermapping'
 require_relative 'formatters/base'
 require_relative 'formatters/issue'
 require_relative 'formatters/comment'
@@ -125,4 +126,3 @@ module GTBI
     end
   end
 end
-
