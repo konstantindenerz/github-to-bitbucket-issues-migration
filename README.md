@@ -29,3 +29,9 @@ Available options
     -r, --repository [ARG]           Export only one repository
     -h, --help                       Show this message
 ```
+
+### User Mapping
+
+Use this file to configure the user mapping.
+**/lib/github-to-bitbucket-issues/formatters/usermapping.rb**
+Each user should be configured.
